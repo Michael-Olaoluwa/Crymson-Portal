@@ -14,12 +14,15 @@ app.use(express.json());  // Parse JSON request bodies
 app.use('/api/auth', authRoutes);
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/Portal', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.log('MongoDB connection error:', err));
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/Portal';
+// Remove legacy mongoose options if present in the connection string (e.g. ?useNewUrlParser=true)
+let sanitizedUri = MONGO_URI.replace(/[?&](useNewUrlParser|useUnifiedTopology)=(?:true|false)/gi, '');
+// Trim trailing ? or & if left
+sanitizedUri = sanitizedUri.replace(/[?&]$/,'');
+
+mongoose.connect(sanitizedUri)
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.log('MongoDB connection error:', err));
 
 // Start server
 const PORT = 3000;

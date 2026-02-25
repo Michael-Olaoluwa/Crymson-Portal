@@ -38,9 +38,12 @@ studentForm.addEventListener('submit', async (e) => {
         const data = await res.json();
 
         if(res.ok) {
-            // Store token if provided
+            // Store token and user info if provided
             if(data.token) {
                 localStorage.setItem('authToken', data.token);
+            }
+            if(data.user?.name) {
+                localStorage.setItem('userName', data.user.name);
             }
             // Redirect to student dashboard
             window.location.href = 'student_dashboard.html';
@@ -83,14 +86,15 @@ staffForm.addEventListener('submit', async (e) => {
             if(data.role) {
                 localStorage.setItem('userRole', data.role);
             }
+            if(data.user?.name) {
+                localStorage.setItem('userName', data.user.name);
+            }
             // Redirect based on role
             const role = data.role || 'lecturer';
-            if(role === 'lecturer') {
-                window.location.href = 'lecturer_dashboard.html';
-            } else if(role === 'hod') {
-                window.location.href = 'hod_dashboard.html';
-            } else if(role === 'dean') {
-                window.location.href = 'dean_dashboard.html';
+            if(role === 'admission') {
+                window.location.href = '../AdmissionOffice/AdmissionOffice.html';
+            } else if(role === 'staff') {
+                window.location.href = '../AdmissionOffice/AdmissionOffice.html'; // Staff can also access admission office
             } else {
                 window.location.href = 'lecturer_dashboard.html'; // default
             }

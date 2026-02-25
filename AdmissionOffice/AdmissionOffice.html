@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Office - User Management</title>
+    <link rel="stylesheet" href="AdmissionOffice.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Crymson University - Admission Office</h1>
+            <div class="user-info">
+                <span id="userGreeting">Welcome, Admin</span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </header>
+
+        <main>
+            <section class="form-section">
+                <h2>Add New User</h2>
+                <form id="addUserForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name:</label>
+                        <input type="text" id="fullName" required placeholder="e.g., John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registrationNumber">Registration Number:</label>
+                        <input type="text" id="registrationNumber" required placeholder="e.g., STU001">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" required placeholder="Minimum 6 characters">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role">User Role:</label>
+                        <select id="role" required>
+                            <option value="">Select Role</option>
+                            <option value="student">Student</option>
+                            <option value="staff">Staff Member</option>
+                            <option value="admission">Admission Officer</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Add User</button>
+                </form>
+                <div id="formMessage" class="message"></div>
+            </section>
+
+            <section class="table-section">
+                <h2>Recent Users Added</h2>
+                <table id="usersTable">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Registration Number</th>
+                            <th>Role</th>
+                            <th>Date Added</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <tr>
+                            <td colspan="4" class="no-data">No users added yet. Use the form above to add users.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Crymson University Portal. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="AdmissionOffice.js"></script>
+</body>
+</html>
