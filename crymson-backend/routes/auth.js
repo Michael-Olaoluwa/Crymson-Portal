@@ -21,10 +21,11 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-// Middleware to verify admission/staff access
+// Middleware to verify admission-office access
+// Only users whose role is exactly 'admission' are allowed
 const verifyAdminAccess = (req, res, next) => {
-  if (req.user.role !== 'staff' && req.user.role !== 'admission') {
-    return res.status(403).json({ message: 'Only admission office staff can add users' });
+  if (req.user.role !== 'admission') {
+    return res.status(403).json({ message: 'Only admission officers can add users' });
   }
   next();
 };

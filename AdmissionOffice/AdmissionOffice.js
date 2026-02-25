@@ -17,7 +17,7 @@ function checkAuthorization() {
         return;
     }
 
-    if (role !== 'staff' && role !== 'admission') {
+    if (role !== 'admission') {
         alert('You do not have permission to access the admission office');
         window.location.href = '../Login/Login.html';
         return;
