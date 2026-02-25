@@ -19,7 +19,7 @@
   }
 
   // Fetch profile info from backend
-  fetch('/api/auth/me', {
+  fetch('http://localhost:3000/api/auth/me', {
     headers: { 'Authorization': 'Bearer ' + token }
   }).then(r => {
     if(!r.ok) throw new Error('Unauthorized');
@@ -28,7 +28,10 @@
     nameEl.textContent = localStorage.getItem('userName') || (data.user && data.user.name) || '—';
     regEl.textContent = data.registrationNumber || '—';
     roleEl.textContent = data.role || role;
-  }).catch(()=> redirectToLogin());
+  }).catch(err => {
+    console.error('Error loading profile:', err);
+    redirectToLogin();
+  });
 
   document.getElementById('logoutBtn').addEventListener('click', ()=>{
     localStorage.removeItem('authToken');
