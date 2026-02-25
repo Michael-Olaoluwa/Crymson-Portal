@@ -104,8 +104,6 @@ router.post('/register', verifyToken, verifyAdminAccess, async (req, res) => {
   }
 });
 
-module.exports = router;
-
 // Protected route to get current user info
 router.get('/me', verifyToken, async (req, res) => {
   try {
@@ -115,3 +113,5 @@ router.get('/me', verifyToken, async (req, res) => {
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 });
+
+module.exports = router;
