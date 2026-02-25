@@ -1,0 +1,15 @@
+* { box-sizing: border-box; }
+body { font-family: Arial, Helvetica, sans-serif; background: #f5f7fb; margin:0; }
+.dashboard { max-width: 900px; margin: 40px auto; background: white; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden; }
+header { display:flex; justify-content:space-between; align-items:center; padding:20px 30px; background: linear-gradient(90deg,#4b6cb7,#182848); color:white; }
+header h1 { margin:0; font-size:20px; }
+.controls { display:flex; gap:12px; align-items:center; }
+#studentName { font-weight:600; }
+#logoutBtn { background: #fff; color:#182848; border: none; padding:8px 12px; border-radius:6px; cursor:pointer; }
+main { padding:24px 30px; display:flex; gap:30px; }
+.profile, .content { flex:1; background:#fbfcfe; padding:20px; border-radius:6px; border:1px solid #eef2f7; }
+.profile h2, .content h2 { margin-top:0; }
+.content ul { list-style:none; padding-left:0; }
+.content a { color:#4b6cb7; text-decoration:none; }
+.content a:hover { text-decoration:underline; }
+@media (max-width:768px){ main{flex-direction:column;} }

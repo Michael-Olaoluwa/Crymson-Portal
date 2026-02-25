@@ -104,3 +104,13 @@ router.post('/register', verifyToken, verifyAdminAccess, async (req, res) => {
 });
 
 module.exports = router;
+
+// Protected route to get current user info
+router.get('/me', verifyToken, async (req, res) => {
+  try {
+    // req.user is populated by verifyToken middleware
+    res.status(200).json({ id: req.user.id, role: req.user.role, registrationNumber: req.user.registrationNumber });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+});
