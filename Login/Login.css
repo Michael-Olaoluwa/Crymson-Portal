@@ -61,9 +61,6 @@
 .wrapper.active .form-box.register{
     pointer-events: auto;
 }
-.wrapper.active .form-box.register{
-    pointer-events: auto;
-}
 .wrapper .form-box.register .animation{
     transform: translateX(120%);
     opacity: 0;
