@@ -42,6 +42,9 @@ studentForm.addEventListener('submit', async (e) => {
             if(data.token) {
                 localStorage.setItem('authToken', data.token);
             }
+            if(data.role) {
+                localStorage.setItem('userRole', data.role);
+            }
             if(data.user?.name) {
                 localStorage.setItem('userName', data.user.name);
             }
