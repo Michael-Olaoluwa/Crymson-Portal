@@ -1,5 +1,5 @@
 // ====== CONFIG ======
-const API_URL = 'http://localhost:3000/api/auth/login';
+const API_URL = '/api/auth/login';
 
 // Select wrappers and forms
 const wrapper = document.querySelector('.wrapper');
@@ -97,9 +97,9 @@ staffForm.addEventListener('submit', async (e) => {
             if(role === 'admission') {
                 window.location.href = '../AdmissionOffice/AdmissionOffice.html';
             } else if(role === 'staff') {
-                window.location.href = '../AdmissionOffice/AdmissionOffice.html'; // Staff can also access admission office
+                window.location.href = 'staff_dashboard.html';
             } else {
-                window.location.href = 'lecturer_dashboard.html'; // default
+                window.location.href = 'lecturer_dashboard.html'; // default for other staff-like roles
             }
         } else {
             alert(data.message || 'Login failed. Please try again.');

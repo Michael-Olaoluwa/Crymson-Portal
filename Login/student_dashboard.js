@@ -13,13 +13,21 @@
   document.getElementById('studentName').textContent = userName || 'Student';
 
   try {
-    const res = await fetch('http://localhost:3000/api/auth/me', {
+    const res = await fetch('/api/auth/me', {
       headers: { 'Authorization': `Bearer ${token}` }
     });
 
     if (!res.ok) {
-      const err = await res.json().catch(()=>({message:'Unknown error'}));
-      throw new Error(err.message || 'Failed to fetch profile');
+      // Log response for debugging
+      const contentType = res.headers.get('content-type') || '';
+      let bodyText = '';
+      if (contentType.includes('application/json')) {
+        bodyText = JSON.stringify(await res.json());
+      } else {
+        bodyText = await res.text();
+      }
+      console.error('Failed /me response', res.status, bodyText);
+      throw new Error(bodyText || 'Failed to fetch profile');
     }
 
     const data = await res.json();

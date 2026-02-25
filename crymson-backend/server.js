@@ -1,16 +1,27 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 
 const authRoutes = require('./routes/auth');
 
 const app = express();
 
 // Middleware
-app.use(cors());          // Allow frontend requests from different port
+// Allow frontend requests from different port and expose Authorization header
+app.use(cors());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  next();
+});
 app.use(express.json());  // Parse JSON request bodies
 
-// Routes
+// Serve static files from frontend directories
+app.use(express.static(path.join(__dirname, '../Login')));
+app.use('/admission', express.static(path.join(__dirname, '../AdmissionOffice')));
+
+// API Routes
 app.use('/api/auth', authRoutes);
 
 // Connect to MongoDB
@@ -25,5 +36,5 @@ mongoose.connect(sanitizedUri)
   .catch(err => console.log('MongoDB connection error:', err));
 
 // Start server
-const PORT = 3000;
-app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running at port ${PORT}`));

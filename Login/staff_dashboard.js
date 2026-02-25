@@ -24,7 +24,7 @@
 
   console.log('[staff_dashboard] Fetching /api/auth/me');
   // Fetch profile info from backend
-  fetch('http://localhost:3000/api/auth/me', {
+  fetch('/api/auth/me', {
     headers: { 'Authorization': 'Bearer ' + token }
   }).then(r => {
     console.log('[staff_dashboard] /me response status:', r.status);

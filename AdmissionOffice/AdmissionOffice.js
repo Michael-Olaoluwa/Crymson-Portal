@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api/auth';
+const API_URL = '/api/auth';
 
 // Check if user is authenticated and has admin access
 document.addEventListener('DOMContentLoaded', () => {
