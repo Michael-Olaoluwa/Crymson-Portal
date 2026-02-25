@@ -36,8 +36,10 @@
     regEl.textContent = data.registrationNumber || '—';
     roleEl.textContent = data.role || role;
   }).catch(err => {
-    console.error('[staff_dashboard] Fetch error:', err);
-    redirectToLogin();
+    const errMsg = '[staff_dashboard] Fetch error: ' + err.message;
+    console.error(errMsg);
+    alert('Staff Dashboard Error:\n' + errMsg + '\n\nToken stored: ' + !!token + '\nRole stored: ' + role);
+    setTimeout(() => redirectToLogin(), 1000);
   });
 
   document.getElementById('logoutBtn').addEventListener('click', ()=>{
