@@ -17,12 +17,17 @@ app.use((req, res, next) => {
 });
 app.use(express.json());  // Parse JSON request bodies
 
-// Serve static files from frontend directories
-app.use(express.static(path.join(__dirname, '../Login')));
-app.use('/admission', express.static(path.join(__dirname, '../AdmissionOffice')));
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
-// API Routes
+// API Routes (place before catch-all so they are not overridden)
 app.use('/api/auth', authRoutes);
+
+// Fallback for client-side routing (optional)
+// Use a middleware without a path to avoid express path parsing errors
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'Login', 'Login.html'));
+});
 
 // Connect to MongoDB
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/Portal';

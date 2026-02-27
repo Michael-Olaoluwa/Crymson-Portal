@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crymson University Login</title>
+    <link rel="stylesheet" href="Login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <div class="wrapper">
+        <span class="bg-animate"></span>
+        <span class="bg-animate2"></span>
+
+        <div class="form-box student">
+            <h2 class="animation" style="--i:0; --j:21;">Student Login</h2>
+            <form action="#">
+                <div class="input-box animation" style="--i:1; --j:22;">
+                    <input type="text" required>
+                    <label>Registration Number</label>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box animation" style="--i:2; --j:23;">
+                    <input type="password" required>
+                    <label>Password</label>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+                <button type="submit" class="btn animation"
+                style="--i:3; --j:24;">Login</button>
+                <div class="logreg-link animation" style="--i:4; --j:25;">
+                    <p>Not a Student? <a href="#" class="staff-link">Login as Staff</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="info-text student">
+            <h2 class="animation" style="--i:0; --j:20;">Student</h2>
+            <p class="animation" style="--i:1; --j:21;">Enter your student credentials to login</p>
+        </div>
+        <div class="form-box staff">
+            <h2 class="animation" style="--i:17; --j:0;">Staff Login</h2>
+            <form action="#">
+                <div class="input-box animation" style="--i:18; --j:1;">
+                    <input type="text" required>
+                    <label>Registration Number</label>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box animation" style="--i:19; --j:2;">
+                    <input type="password" required>
+                    <label>Password</label>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+                <button type="submit" class="btn animation" style="--i:20; --j:3;">Login</button>
+                <div class="logreg-link animation" style="--i:21; --j:4;">
+                    <p>Are you a Student? <a href="#" class="student-link">Login as Student</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="info-text staff">
+            <h2 class="animation" style="--i:17; --j:0;">Staff</h2>
+            <p class="animation" style="--i:18; --j:1;">Enter your staff credentials to login</p>
+        </div>
+    </div>
+    <script src="Login.js"></script>
+</body>
+</html>

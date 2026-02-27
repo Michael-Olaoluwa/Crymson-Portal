@@ -1,0 +1,13 @@
+:root{
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --accent:#2b6cb0;
+}
+*{box-sizing:border-box;font-family:Segoe UI, Roboto, Arial, sans-serif}
+body{margin:0;background:var(--bg);color:#111}
+.container{max-width:820px;margin:48px auto;padding:24px}
+.card{background:var(--card);padding:18px;border-radius:8px;box-shadow:0 6px 18px rgba(16,24,40,0.06)}
+h1{margin:0 0 18px 0;color:var(--accent)}
+.actions{margin-top:18px}
+.btn{background:var(--accent);color:#fff;padding:10px 14px;border:none;border-radius:6px;cursor:pointer}
+.btn:active{transform:translateY(1px)}
