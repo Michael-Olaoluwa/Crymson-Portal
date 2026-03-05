@@ -24,8 +24,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/auth', authRoutes);
 
 // Fallback for client-side routing (optional)
-// Use a middleware without a path to avoid express path parsing errors
+// Only serve Login.html for requests without a file extension
 app.use((req, res) => {
+  // Don't serve Login.html for static files (has a dot extension) or API routes
+  if (req.path.includes('.') || req.path.startsWith('/api')) {
+    return res.status(404).json({ message: 'Not found' });
+  }
   res.sendFile(path.join(__dirname, 'public', 'Login', 'Login.html'));
 });
 
