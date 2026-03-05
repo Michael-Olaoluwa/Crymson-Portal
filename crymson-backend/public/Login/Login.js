@@ -1,5 +1,5 @@
 // ====== CONFIG ======
-const API_URL = '/api/auth/login';
+const API_URL = 'http://localhost:3000/api/auth/login';
 
 // Select wrappers and forms
 const wrapper = document.querySelector('.wrapper');
